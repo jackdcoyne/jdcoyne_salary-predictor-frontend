@@ -10,37 +10,31 @@ app.config["SECRET_KEY"] = "seasdad(*2sffcra01^23sdet"
 CORS(app)
 
 # Get this URL from the Azure Overview page of your API web app
-api_url = "http://127.0.0.1:5000" # base url for API endpoints
+api_url = "https://api-jdcoyne.azurewebsites.net" # base url for API endpoints
 
 # main index page route
 @app.route("/")
 def index():
     return render_template("index.html")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
-    print("in predict route")
     if request.method == "GET":
         return render_template("index.html")
 
     if request.method == "POST":
-        print("in post method")
-        #### capture data from the form
         form = request.form  # declare a form variable to capture the form data
-        print("extracted form data")
-        print(form)
-        # extract user data from the form and save it in a python variable
         age = form["age"]
-        print(age)
         gender = form["gender"]
         country = form["country"]
         highest_deg = form["highest_deg"]
         coding_exp = form["coding_exp"]
         title = form["title"]
         company_size = form["company_size"]
-
-        print(age, gender, country, highest_deg, coding_exp, title, company_size)
 
         # Create dictionary of form data
         salary_predict_variables = {
@@ -55,9 +49,7 @@ def predict():
 
         # Send data to API as JSON
         url = api_url + f"/predict"
-        print(url)
         headers = {"Content-Type": "application/json"}
-        print(headers)
 
         # get a response from the api
         try:

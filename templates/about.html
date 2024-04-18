@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page_title %}About - AI Salary Predictor{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>About This Project</h1>
+    <p>
+        Jack Coyne created this project as part of the coursework for the Digital Product Management class. 
+        The aim is to demonstrate how artificial intelligence can be employed to predict salaries based on 
+        various inputs such as age, experience, and education level. This application serves as a practical 
+        example of integrating machine learning models with a front-end interface to provide real-time predictions.
+    </p>
+    <!-- Image with inline style for size -->
+    <img src="{{ url_for('static', filename='lone-wolf.jpg') }}" alt="Descriptive Alt Text" 
+    style="width: 200px; height: auto;" class="img-fluid">
+    <p>
+        This project integrates technologies including Python, Flask, and Bootstrap to create a responsive web application. 
+        It is designed to be informative and user-friendly, allowing users to understand how different factors 
+        might affect their potential earnings in the tech industry.
+    </p>
+</div>
+{% endblock %}
